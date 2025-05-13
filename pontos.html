@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/bus.png" type="image/x-icon">
+    <title>Pontos de Recarga - PontoCego</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blue-dark': '#0F3460',
+                        'blue-medium': '#1A6BB3',
+                        'blue-light': '#5DA3FA',
+                        'blue-lighter': '#E0EAFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-dark text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-bus text-2xl text-blue-light"></i>
+                    <span class="text-xl font-bold">PontoCego</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-blue-light transition-colors">Página Inicial</a>
+                    <a href="informacoes.html" class="text-white hover:text-blue-light transition-colors">Informações</a>
+                    <a href="pontos.html" class="text-blue-light transition-colors">Pontos de Recarga</a>
+                    <a href="comunidade.html" class="text-white hover:text-blue-light transition-colors">Comunidade</a>
+                    <a href="reclamacoes.html" class="text-white hover:text-blue-light transition-colors">Central de Reclamações</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-3">
+                    <a href="login.html" class="px-4 py-2 border border-blue-light text-blue-light hover:bg-blue-light hover:text-white rounded-md transition-colors">Entrar</a>
+                    <a href="cadastro.html" class="px-4 py-2 bg-blue-medium hover:bg-blue-light text-white rounded-md transition-colors">Cadastrar</a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation (Hidden by default) -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-3 py-3">
+                    <a href="index.html" class="text-white hover:text-blue-light transition-colors">Página Inicial</a>
+                    <a href="informacoes.html" class="text-white hover:text-blue-light transition-colors">Informações</a>
+                    <a href="pontos.html" class="text-blue-light transition-colors">Pontos de Recarga</a>
+                    <a href="comunidade.html" class="text-white hover:text-blue-light transition-colors">Comunidade</a>
+                    <a href="reclamacoes.html" class="text-white hover:text-blue-light transition-colors">Central de Reclamações</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8 flex-grow">
+        <h1 class="text-3xl font-bold text-blue-dark mb-6">Pontos de Recarga</h1>
+        
+        <!-- Search Section -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+            <h2 class="text-2xl font-bold text-blue-dark mb-4">Encontre um ponto de recarga</h2>
+            
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <div class="flex-grow">
+                    <input type="text" placeholder="Digite seu bairro ou CEP" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
+                </div>
+                <button class="bg-blue-medium text-white px-6 py-2 rounded-md hover:bg-blue-light transition-colors">
+                    <i class="fas fa-search mr-2"></i> Buscar
+                </button>
+            </div>
+            
+            <div class="bg-blue-lighter p-4 rounded-lg">
+                <p class="text-blue-dark">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    Você também pode recarregar seu cartão pelo aplicativo do RecargaPay, disponível para Android e iOS.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Recharge Points List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- Point 1 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Terminal Praia Grande</h3>
+                        <p class="text-gray-600 mb-2">Av. Sen. Vitorino Freire, S/N - Centro, São Luís - MA, 65010-655</p>
+                        <p class="text-gray-600 mb-2">Horário: 06:30 às 20:00 (Segunda a Sexta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/AZDVvGjNbinmDW2L7" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Point 2 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Terminal Cohama</h3>
+                        <p class="text-gray-600 mb-2">Cantinho do Céu, São Luís - MA, 65074-115</p>
+                        <p class="text-gray-600 mb-2">Horário: 06:30 às 20:00 (Segunda a Sexta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/SinmhzM4aNkc1LBo8" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Point 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Terminal Cohab</h3>
+                        <p class="text-gray-600 mb-2">237, Av. Jerônimo de Albuquerque, 117, São Luís - MA</p>
+                        <p class="text-gray-600 mb-2">Horário: 06:30 às 20:00 (Segunda a Sexta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/obcjepcSUudpMvQi9" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Point 4 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Terminal São Cristóvão</h3>
+                        <p class="text-gray-600 mb-2">1168, Av. Lourenço Vieira da Silva, 1038 - Tirirical, São Luís - MA, 65055-310</p>
+                            <p class="text-gray-600 mb-2">Horário: 06:30 às 20:00 (Segunda a Sexta)</p>
+                            <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/XMjaStqGvfwok8rL9" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Terminal Distrito</h3>
+                        <p class="text-gray-600 mb-2">BR-135, 7762 - Vila Sarney, São Luís - MA</p>
+                        <p class="text-gray-600 mb-2">Horário: 06:30 às 20:00 (Segunda a Sexta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/smprNKRAPQJtA8kr9" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Viva Shopping da Ilha</h3>
+                        <p class="text-gray-600 mb-2">Viva Shopping da Ilha - Av. Daniel de La Touche, 987 - Cohama, São Luís - MA, 65061-901</p>
+                        <p class="text-gray-600 mb-2">Horário: 10:00 às 20:00 (Segunda a Quinta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 10:00 às 19:00 (Sexta)</p>
+                        <a href="https://maps.app.goo.gl/rP9eiLuJFS2CPcoW7" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Viva Shopping do Passeio</h3>
+                        <p class="text-gray-600 mb-2">Viva Shopping do Passeio - Av. Contôrno Norte, 145 - Cohatrac IV, São Luís - MA, 65054-375</p>
+                        <p class="text-gray-600 mb-2">Horário: 09:00 às 19:00 (Segunda a Quinta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 10:00 às 19:00 (Sexta)</p>
+                        <a href="https://maps.app.goo.gl/acazuEpqMf6VQoSj7" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Viva Pátio Norte</h3>
+                        <p class="text-gray-600 mb-2">Viva Shopping Pátio Norte - Estrada de São José de Ribamar, MA-201, Km-05 nº 1000 - Saramanta, São José de Ribamar - MA, 65110-000</p>
+                        <p class="text-gray-600 mb-2">Horário: 10:00 às 20:00 (Segunda a Quinta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 10:00 às 19:00 (Sexta)</p>
+                        <a href="https://maps.app.goo.gl/vMo5JKCkbCFM4ZPR6" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Posto Apicum</h3>
+                        <p class="text-gray-600 mb-2">Rua Xisto Albano - Apicum, São Luís - MA, 65025-840</p>
+                        <p class="text-gray-600 mb-2">Horário: 07:00 às 17:00 (Segunda a Sexta)</p>
+                        <a href="https://maps.app.goo.gl/ijNmHo4RBKWsVjYKA" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">Central de Estudante</h3>
+                        <p class="text-gray-600 mb-2">Av. Getúlio Vargas, 70 - Apeadouro, São Luís - MA, 65025-000</p>
+                        <p class="text-gray-600 mb-2">Horário: 07:00 às 17:00 (Segunda a Sexta)</p>
+                        <a href="https://maps.app.goo.gl/EeY8Nk2gz6yF1Kxm8" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex items-start">
+                    <div class="bg-blue-lighter p-3 rounded-full mr-4">
+                        <i class="fas fa-map-marker-alt text-blue-medium text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-dark mb-2">São José de Ribamar</h3>
+                        <p class="text-gray-600 mb-2">Av. Clodomir Cardoso, n° 1060, São José de Ribamar (garagem TCM)</p>
+                        <p class="text-gray-600 mb-2">Horário: 07:00 às 19:00 (Segunda a Sexta)</p>
+                        <p class="text-gray-600 mb-2">Horário: 08:00 às 12:00 (Sábado)</p>
+                        <a href="https://maps.app.goo.gl/UCWznd4QvfTT2hJJ8" class="text-blue-medium hover:text-blue-light flex items-center">
+                            <i class="fas fa-map mr-2"></i> Ver no mapa
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <!-- Services Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-dark mb-4">Acesse também</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Service Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-file text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Página Inicial</h3>
+                    <p class="text-gray-600 mb-4">Transporte público com conforto e segurança</p>
+                    <a href="index.html" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-info-circle text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Informações</h3>
+                    <p class="text-gray-600 mb-4">Encontre informações úteis sobre o sistema de transporte, tarifas e muito mais.</p>
+                    <a href="informacoes.html" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Comunidade</h3>
+                    <p class="text-gray-600 mb-4">Conecte-se com outras pessoas, compartilhe ideias e colabore para o nosso site.</p>
+                    <a href="comunidade.html" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-warning text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Central de Reclamações</h3>
+                    <p class="text-gray-600 mb-4">Faça sua reclamação/denúncia aqui.</p>
+                    <a href="central.html" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-dark text-white py-8 mt-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-bus text-xl text-blue-light"></i>
+                        <span class="text-lg font-bold">PontoCego</span>
+                    </div>
+                    <p class="text-blue-lighter mb-4">Transporte público com qualidade, segurança e pontualidade.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-blue-lighter hover:text-white transition-colors">Página Inicial</a></li>
+                        <li><a href="informacoes.html" class="text-blue-lighter hover:text-white transition-colors">Informações</a></li>
+                        <li><a href="pontos.html" class="text-blue-lighter hover:text-white transition-colors">Pontos de Recarga</a></li>
+                        <li><a href="comunidade.html" class="text-blue-lighter hover:text-white transition-colors">Comunidade</a></li>
+                        <li><a href="central.html" class="text-blue-lighter hover:text-white transition-colors">Central de Reclamações</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-light"></i> Av. Principal, 1000 - Centro</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2 text-blue-light"></i> (98) 3333-4444</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-light"></i> contato@pontocego.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-medium mt-8 pt-8 text-center text-blue-lighter">
+                <p>&copy; 2025 PontoCego. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.md\\:hidden.text-white');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/src/bus.png" type="image/x-icon">
+    <title>PontoCego - Transporte Público</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blue-dark': '#0F3460',
+                        'blue-medium': '#1A6BB3',
+                        'blue-light': '#5DA3FA',
+                        'blue-lighter': '#E0EAFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-dark text-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-bus text-2xl text-blue-light"></i>
+                    <span class="text-xl font-bold">PontoCego</span>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-white hover:text-blue-light transition-colors">Página Inicial</a>
+                    <a href="informacoes.html" class="text-white hover:text-blue-light transition-colors">Informações</a>
+                    <a href="pontos.html" class="text-white hover:text-blue-light transition-colors">Pontos de Recarga</a>
+                    <a href="comunidade.html" class="text-white hover:text-blue-light transition-colors">Comunidade</a>
+                    <a href="central.html" class="text-white hover:text-blue-light transition-colors">Central de Reclamações</a>
+                </nav>
+
+                <!-- Auth Buttons -->
+                <div class="flex items-center space-x-3">
+                    <a href="login.html" class="px-4 py-2 border border-blue-light text-blue-light hover:bg-blue-light hover:text-white rounded-md transition-colors">Entrar</a>
+                    <a href="cadastro.html" class="px-4 py-2 bg-blue-medium hover:bg-blue-light text-white rounded-md transition-colors">Cadastrar</a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation (Hidden by default) -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-3 py-3">
+                    <a href="index.html" class="text-white hover:text-blue-light transition-colors">Página Inicial</a>
+                    <a href="informacoes.html" class="text-white hover:text-blue-light transition-colors">Informações</a>
+                    <a href="pontos.html" class="text-white hover:text-blue-light transition-colors">Pontos de Recarga</a>
+                    <a href="comunidade.html" class="text-white hover:text-blue-light transition-colors">Comunidade</a>
+                    <a href="central.html" class="text-white hover:text-blue-light transition-colors">Central de Reclamações</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-blue-dark text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Transporte público com conforto e segurança</h1>
+                    <p class="text-lg mb-6 text-blue-lighter">O PontoCego é o sistema de transporte público que conecta toda a cidade com eficiência, conforto e segurança.
+                        Com linhas que cobrem todos os bairros e  horários frequentes, o PontoCego é a melhor opção para seu deslocamento diário.
+                    </p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="/src/image.png" alt="Ônibus moderno" class="rounded-lg shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-dark mb-4">Nossos Serviços</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conheça os serviços que oferecemos para tornar sua viagem mais confortável e conveniente.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Service Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-info-circle text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Informações</h3>
+                    <p class="text-gray-600 mb-4">Encontre informações úteis sobre o sistema de transporte, tarifas e muito mais.</p>
+                    <a href="informacoes.html" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-credit-card text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Pontos de Recarga</h3>
+                    <p class="text-gray-600 mb-4">Consulte os pontos de recarga mais próximos de você</p>
+                    <a href="#" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Comunidade</h3>
+                    <p class="text-gray-600 mb-4">Conecte-se com outras pessoas, compartilhe ideias e colabore para o nosso site.</p>
+                    <a href="#" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-warning text-blue-medium text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-dark mb-2">Central de Reclamações</h3>
+                    <p class="text-gray-600 mb-4">Faça sua reclamação/denúncia aqui.</p>
+                    <a href="#" class="text-blue-medium hover:text-blue-light flex items-center">
+                        Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer class="bg-blue-dark text-white py-8 mt-auto">
+        <div class="container mx-auto px-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-3">
+                        <i class="fas fa-bus text-xl text-blue-light"></i>
+                        <span class="text-lg font-bold">PontoCego</span>
+                    </div>
+                    <p class="text-blue-lighter mb-3">Transporte público com qualidade, segurança e pontualidade.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-blue-light hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-blue-lighter hover:text-white transition-colors">Página Inicial</a></li>
+                        <li><a href="informacoes.html" class="text-blue-lighter hover:text-white transition-colors">Informações</a></li>
+                        <li><a href="pontos.html" class="text-blue-lighter hover:text-white transition-colors">Pontos de Recarga</a></li>
+                        <li><a href="comunidade.html" class="text-blue-lighter hover:text-white transition-colors">Comunidade</a></li>
+                        <li><a href="central.html" class="text-blue-lighter hover:text-white transition-colors">Central de Reclamações</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-bold mb-3">Contato</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-light"></i> Av. Principal, 1000 - Centro</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-2 text-blue-light"></i> (98) 3333-4444</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-light"></i> contato@pontocego.com</li>
+                    </ul>
+                </div>
+
+            
+            </div>
+
+            <div class="border-t border-blue-medium mt-8 pt-8 text-center text-blue-lighter">
+                <p>&copy; 2025 PontoCego. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuButton = document.querySelector('.md\\:hidden.text-white');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
