@@ -20,7 +20,17 @@
             }
         }
     </script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <script src="../src/comunidade.js" defer></script>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
@@ -70,6 +80,10 @@
 
     <main class="container mx-auto px-4 py-8 flex-grow">
         <h1 class="text-3xl font-bold text-blue-dark mb-6">Comunidade</h1>
+
+        <div id="map-container" class="w-ful">
+            <div id="map" style="width: 100%; height: 400px; z-index: 0;"></div>
+        </div>
         
         <div class="bg-white p-6 rounded-lg shadow-md mb-8">
             <h2 class="text-2xl font-bold text-blue-dark mb-4">Participe da nossa comunidade</h2>
