@@ -23,14 +23,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
-    <!-- Header -->
     <header class="bg-blue-dark text-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
-                <!-- Logo -->
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-bus text-2xl text-blue-light"></i>
-                    <span class="text-xl font-bold">PontoCego</span>
+                    <a href="index.html">
+                        <i class="fas fa-bus text-2xl text-blue-light"></i>
+                        <span class="text-xl font-bold">PontoCego</span>
+                    </a>
+                    
                 </div>
 
                 <!-- Desktop Navigation -->
@@ -67,7 +68,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="bg-blue-dark text-white py-16">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center">
@@ -84,7 +84,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -93,7 +92,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- Service Card 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-info-circle text-blue-medium text-xl"></i>
@@ -105,7 +103,6 @@
                     </a>
                 </div>
 
-                <!-- Service Card 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-credit-card text-blue-medium text-xl"></i>
@@ -117,7 +114,6 @@
                     </a>
                 </div>
 
-                <!-- Service Card 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-users text-blue-medium text-xl"></i>
@@ -129,7 +125,6 @@
                     </a>
                 </div>
 
-                <!-- Service Card 2 -->
                 <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
                     <div class="w-12 h-12 bg-blue-lighter rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-warning text-blue-medium text-xl"></i>
@@ -146,11 +141,9 @@
 
     
 
-    <!-- Footer -->
     <footer class="bg-blue-dark text-white py-8 mt-auto">
         <div class="container mx-auto px-3">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Company Info -->
                 <div>
                     <div class="flex items-center space-x-2 mb-3">
                         <i class="fas fa-bus text-xl text-blue-light"></i>
@@ -164,19 +157,17 @@
                     </div>
                 </div>
 
-                <!-- Quick Links -->
                 <div>
                     <h3 class="text-lg font-bold mb-3">Links Rápidos</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-blue-lighter hover:text-white transition-colors">Página Inicial</a></li>
-                        <li><a href="informacoes.html" class="text-blue-lighter hover:text-white transition-colors">Informações</a></li>
-                        <li><a href="pontos.html" class="text-blue-lighter hover:text-white transition-colors">Pontos de Recarga</a></li>
-                        <li><a href="comunidade.html" class="text-blue-lighter hover:text-white transition-colors">Comunidade</a></li>
-                        <li><a href="central.html" class="text-blue-lighter hover:text-white transition-colors">Central de Reclamações</a></li>
+                        <li><a href="/index.html" class="text-blue-lighter hover:text-white transition-colors">Página Inicial</a></li>
+                        <li><a href="/pages/informacoes.html" class="text-blue-lighter hover:text-white transition-colors">Informações</a></li>
+                        <li><a href="/pages/pontos.html" class="text-blue-lighter hover:text-white transition-colors">Pontos de Recarga</a></li>
+                        <li><a href="/pages/comunidade.html" class="text-blue-lighter hover:text-white transition-colors">Comunidade</a></li>
+                        <li><a href="/pages/central.html" class="text-blue-lighter hover:text-white transition-colors">Central de Reclamações</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
                 <div>
                     <h3 class="text-lg font-bold mb-3">Contato</h3>
                     <ul class="space-y-2">
@@ -195,7 +186,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu Toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const menuButton = document.querySelector('.md\\:hidden.text-white');
