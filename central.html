@@ -21,6 +21,21 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <!-- Import leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+    <script src="src/central.js" defer></script>
+    <script src="src/mappick.js" defer></script>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
     <!-- Header -->
@@ -83,30 +98,35 @@
                     </p>
                 </div>
             </div>
+
             
             <!-- Formulário de Reclamação -->
-            <form class="space-y-6">
+            <form id="complaint-form" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="nome" class="block text-gray-700 font-medium mb-2">Nome completo</label>
-                        <input type="text" id="nome" name="nome" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
-                    </div>
+                    <!-- <div>
+                        <label for="nome" class="block text-gray-700 font-medium mb-2">Autor</label>
+                        <input type="text" id="nome" name="author" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
+                    </div> -->
                     
-                    <div>
+                    <!-- <div>
                         <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
                         <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
+                    <!-- <div>
                         <label for="telefone" class="block text-gray-700 font-medium mb-2">Telefone</label>
-                        <input type="tel" id="telefone" name="telefone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
+                        <input type="tel" id="telefone" name="contact" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
                     </div>
-                    
+                     -->
                     <div>
-                        <label for="tipo" class="block text-gray-700 font-medium mb-2">Tipo de mensagem</label>
-                        <select id="tipo" name="tipo" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
+                        <label for="nome" class="block text-gray-700 font-medium mb-2">Autor</label>
+                        <input type="text" id="author" name="author" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
+                    </div>
+                    <div>
+                        <label for="category" class="block text-gray-700 font-medium mb-2">Tipo de mensagem</label>
+                        <select id="category" name="category" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required>
                             <option value="">Selecione uma opção</option>
                             <option value="reclamacao">Reclamação</option>
                             <option value="denuncia">Denúncia</option>
@@ -118,30 +138,29 @@
                 </div>
                 
                 <div>
-                    <label for="linha" class="block text-gray-700 font-medium mb-2">Linha de ônibus (se aplicável)</label>
-                    <input type="text" id="linha" name="linha" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
+                    <label for="busline" class="block text-gray-700 font-medium mb-2">Linha de ônibus (se aplicável)</label>
+                    <input type="text" id="busline" name="busline" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                        <label for="local" class="block text-gray-700 font-medium mb-2">Local do ocorrido</label>
-                        <input type="text" id="local" name="local" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
+                        <!-- <label for="local" class="block text-gray-700 font-medium mb-2">Local do ocorrido</label> -->
+                        <input type="hidden" id="latitude" name="latitude">
+                        <input type="hidden" id="longitude" name="longitude">
+
+                        <button id="modal-btn" data-modal-target="default-modal" data-modal-toggle="default-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            Selecione local de ocorrência 
+                        </button>
                     </div>
-                    
                     <div>
-                        <label for="data" class="block text-gray-700 font-medium mb-2">Data do ocorrido</label>
-                        <input type="date" id="data" name="data" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
-                    </div>
-                    
-                    <div>
-                        <label for="hora" class="block text-gray-700 font-medium mb-2">Hora do ocorrido</label>
-                        <input type="time" id="hora" name="hora" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
+                        <label for="local" class="block text-gray-700 font-medium mb-2">Problema</label>
+                        <input type="text" id="title" name="title" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium">
                     </div>
                 </div>
                 
                 <div>
-                    <label for="mensagem" class="block text-gray-700 font-medium mb-2">Sua mensagem</label>
-                    <textarea id="mensagem" name="mensagem" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required></textarea>
+                    <label for="description" class="block text-gray-700 font-medium mb-2">Descrição</label>
+                    <textarea id="description" name="description" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-medium" required></textarea>
                 </div>
                 
                 <div>
@@ -168,7 +187,7 @@
                 </div>
                 
                 <div>
-                    <button type="submit" class="px-6 py-3 bg-blue-medium hover:bg-blue-light text-white rounded-md transition-colors">
+                    <button id="submit-btn" type="submit" class="px-6 py-3 bg-blue-medium hover:bg-blue-light text-white rounded-md transition-colors">
                         <i class="fas fa-paper-plane mr-2"></i> Enviar mensagem
                     </button>
                 </div>
@@ -330,6 +349,38 @@
         </div>
     </footer>
 
+    <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                        Localização do ocorrido
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                    <div id="weathermap" style="width: 100%; height: 400px;"></div>
+                    
+                </div>
+                <!-- Modal footer -->
+                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                    <button id="locate-btn" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        Localização atual
+                    </button>
+                    <button data-modal-hide="default-modal" type="button" class="mx-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript for Mobile Menu Toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -365,6 +416,8 @@
                 }, 1000); // Simula um tempo de processamento de 1 segundo
             });
         });
+        
+       
     </script>
 </body>
 </html>
