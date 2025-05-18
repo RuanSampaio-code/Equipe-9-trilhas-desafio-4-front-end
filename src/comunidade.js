@@ -9,7 +9,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const complaints = document.querySelector("#complaints")
+  const categories = [...document.querySelectorAll('.category')];
 
+  categories.forEach((element) => {
+    // filter logic
+    element.addEventListener('click', () => {
+      const category = element.dataset['category'];
+      const rows = [...complaints.querySelectorAll('tr')];
+      
+      rows.forEach(row => {
+        row.style.display = row.dataset['category'] === category ? 'table-row' : 'none';
+      })
+
+    });
+
+    // highlight logic
+    element.addEventListener('click', () => {
+      categories.forEach((el) => el.classList.remove('highlight'));
+      element.classList.add('highlight');
+    });
+
+  })
+
+  function setCounters(complaints) {
+    const counter = complaints.reduce((acc, el) => {
+      const {category} = el;
+
+      if (!acc[category]) acc[category] = 0;
+      acc[category]++;
+
+      return acc;
+    }, {});
+
+    const categories = document.querySelectorAll('.category');
+    for (const categoryNode of categories) {
+      const counterNode = categoryNode.querySelector(".counter");
+      const categoryName = categoryNode.dataset["category"];
+      counterNode.innerText = counter[categoryName] || 0;
+    }
+  }
 
   // Modal elements - will be created dynamically
   let modal
@@ -47,7 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Get complaints and render them
   getComplaints().then((data) => {
     complaints.innerHTML = ""
+
     setMarkers(map, data);
+    setCounters(data);
+
     data.forEach((complaint) => {
       console.log(complaint)
       complaints.append(generateRow(complaint))
@@ -59,6 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             L.marker([latitude, longitude]).addTo(map);
         }
     }
+  
 
   function generateRow({ title, author, category, comments, date, id, description, likes, dislikes }) {
     const row = document.createElement("tr")
@@ -70,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Set the number of comments (default to 0 if undefined)
     const commentCount = comments ? comments.length : 0
 
+    row.dataset['category'] = category;
     row.innerHTML = `
       <td class="py-3 px-4">
         <p class="text-blue-medium hover:text-blue-light" style="cursor: pointer">${title}</p>

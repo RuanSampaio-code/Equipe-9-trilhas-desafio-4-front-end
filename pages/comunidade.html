@@ -32,6 +32,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="../src/comunidade.js" defer></script>
+
+    <style>
+        .category {
+            cursor: pointer;
+        }
+
+        .category:hover {
+            box-shadow: 0 0 0 1px #5DA3FA !important; /* simula uma borda preta de 2px */
+        }
+        
+        .highlight {
+            box-shadow: 0 0 0 2px #5DA3FA !important; /* simula uma borda preta de 2px */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen">
     <header class="bg-blue-dark text-white shadow-md sticky top-0 z-50">
@@ -81,8 +95,11 @@
     <main class="container mx-auto px-4 py-8 flex-grow">
         <h1 class="text-3xl font-bold text-blue-dark mb-6">Comunidade</h1>
 
-        <div id="map-container" class="w-ful">
-            <div id="map" style="width: 100%; height: 400px; z-index: 0;"></div>
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-blue-dark mb-4">Mapa de ocorrências</h2>
+            <div id="map-container" class="w-full">
+                <div id="map" style="width: 100%; height: 400px; z-index: 0;"></div>
+            </div>
         </div>
         
         <div class="mb-8">
@@ -90,7 +107,7 @@
             
             <div class="grid grid-cols-1 gap-4">
                 
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="category bg-white rounded-lg shadow-md p-6" data-category="reclamacao-denuncia">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="bg-blue-lighter p-3 rounded-full mr-4">
@@ -102,13 +119,13 @@
                             </div>
                         </div>
                         <div class="text-gray-500">
-                            <span class="block text-center">87</span>
+                            <span class="counter block text-center">87</span>
                             <span class="text-sm">Tópicos</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="category bg-white rounded-lg shadow-md p-6" data-category="elogios">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="bg-blue-lighter p-3 rounded-full mr-4">
@@ -120,13 +137,13 @@
                             </div>
                         </div>
                         <div class="text-gray-500">
-                            <span class="block text-center">56</span>
+                            <span class="counter block text-center">56</span>
                             <span class="text-sm">Tópicos</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="category bg-white rounded-lg shadow-md p-6" data-category="sugestao">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="bg-blue-lighter p-3 rounded-full mr-4">
@@ -138,13 +155,13 @@
                             </div>
                         </div>
                         <div class="text-gray-500">
-                            <span class="block text-center">56</span>
+                            <span class="counter block text-center">56</span>
                             <span class="text-sm">Tópicos</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-6">
+                <div class="category bg-white rounded-lg shadow-md p-6" data-category="duvida">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center">
                             <div class="bg-blue-lighter p-3 rounded-full mr-4">
@@ -156,7 +173,7 @@
                             </div>
                         </div>
                         <div class="text-gray-500">
-                            <span class="block text-center">124</span>
+                            <span class="counter block text-center">124</span>
                             <span class="text-sm">Tópicos</span>
                         </div>
                     </div>
