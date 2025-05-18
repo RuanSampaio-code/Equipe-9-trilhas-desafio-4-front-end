@@ -367,36 +367,6 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuButton = document.querySelector('.md\\:hidden.text-white');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            menuButton.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
-            });
-        
-            const form = document.querySelector('form');
-            const feedbackSucesso = document.getElementById('feedback-sucesso');
-            const protocolo = document.getElementById('protocolo');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Previne o envio real do formulário
-                
-                setTimeout(function() {
-                    const numeroProtocolo = 'REC-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000);
-                    protocolo.textContent = numeroProtocolo;
-                    
-                    feedbackSucesso.classList.remove('hidden');
-                    
-                    feedbackSucesso.scrollIntoView({ behavior: 'smooth' });
-                    
-                    form.reset();
-                }, 1000); 
-            });
-        });
-        
-       
-    </script>
+    
 </body>
 </html>
