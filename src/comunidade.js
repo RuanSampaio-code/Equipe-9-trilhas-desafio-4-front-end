@@ -15,12 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // filter logic
     element.addEventListener('click', () => {
       const category = element.dataset['category'];
-      const rows = [...complaints.querySelectorAll('tr')];
-      
-      rows.forEach(row => {
-        row.style.display = row.dataset['category'] === category ? 'table-row' : 'none';
-      })
-
+      filterComplaints(category);
     });
 
     // highlight logic
@@ -30,6 +25,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   })
+
+  function filterComplaints(category) {
+    const rows = [...complaints.querySelectorAll('tr')];
+      
+    rows.forEach(row => {
+      row.style.display = row.dataset['category'] === category ? 'table-row' : 'none';
+    })
+  }
 
   function setCounters(complaints) {
     const counter = complaints.reduce((acc, el) => {
@@ -90,7 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setCounters(data);
 
     data.forEach((complaint) => {
-      console.log(complaint)
       complaints.append(generateRow(complaint))
     })
   })
@@ -102,15 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
 
-  function generateRow({ title, author, category, comments, date, id, description, likes, dislikes }) {
+  function generateRow({ title, author, category, commentCounter, date, id, description, likes, dislikes }) {
     const row = document.createElement("tr")
     row.classList = ["border-b", "border-gray-200", "hover:bg-gray-50", "cursor-pointer"]
 
     // Format the category for display
     const formatedCategory = formatCategory(category)
-
-    // Set the number of comments (default to 0 if undefined)
-    const commentCount = comments ? comments.length : 0
 
     row.dataset['category'] = category;
     row.innerHTML = `
@@ -119,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </td>
       <td class="py-3 px-4">${author || "Anônimo"}</td>
       <td class="py-3 px-4">${formatedCategory}</td>
-      <td class="py-3 px-4">${commentCount}</td>
+      <td class="py-3 px-4">${commentCounter || 0}</td>
       <td class="py-3 px-4">${formatDate(date._seconds)}</td>
     `
 
@@ -239,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Submit comment button
     const submitCommentButton = document.getElementById("submit-comment")
     if (submitCommentButton) {
-      submitCommentButton.addEventListener("click", async () => {
+      submitCommentButton.addEventListener("click", async (e) => {
         const authorInput = document.getElementById("comment-author")
         const textInput = document.getElementById("comment-text")
 
@@ -325,6 +324,9 @@ document.addEventListener("DOMContentLoaded", () => {
     data.forEach((complaint) => {
       complaints.append(generateRow(complaint))
     })
+
+    const categoryNode = document.querySelector('.category.highlight');
+    filterComplaints(categoryNode.dataset['category']);
   }
 
   async function getComplaints() {
